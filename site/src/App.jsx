@@ -10,7 +10,6 @@ export default function App() {
       <CartBotao />
       <Header />
       <Produtos />
-
       <Cart />
     </Provider>
   );

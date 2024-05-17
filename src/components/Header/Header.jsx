@@ -1,23 +1,17 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import AppContext from "../context/appContext";
-import fetchProdutos from "../../api-mercado/fetchProdutos";
+import AppContext from "../context/AppContext";
 
 export default function Header() {
   const [input, setInput] = useState("");
 
-  //const { setProdutos } = useContext(AppContext);
+  const { setPesquisa } = useContext(AppContext);
 
-  useEffect(() => {
-    fetchProdutos(input).then((resposta) => {
-      console.log(resposta);
-    });
-  });
-
-  const procurar = () => {
-    setInput("");
+  const handleProcurar = (event) => {
+    event.preventDefault(); // event
+    setPesquisa(input);
   };
 
   return (
@@ -28,7 +22,7 @@ export default function Header() {
           <h3>Lojinha do Carlos</h3>
         </div>
 
-        <form className="search-bar" onSubmit={procurar}>
+        <form className="search-bar" onSubmit={handleProcurar}>
           <input
             value={input}
             placeholder="Buscar produtos"

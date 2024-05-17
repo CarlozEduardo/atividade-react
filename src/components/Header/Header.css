@@ -24,6 +24,7 @@ header > div {
   text-align: start;
   width: 200px;
   height: 30px;
+  color: white;
 }
 
 .search__input::-webkit-input-placeholder {

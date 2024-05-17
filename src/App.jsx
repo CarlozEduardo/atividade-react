@@ -1,18 +1,17 @@
-import styled from "styled-components";
+import Cart from "./components/Cart/Cart";
+import CartBotao from "./components/CartBotao/CartBotao";
 import Header from "./components/Header/Header";
 import Produtos from "./components/Produtos/Produtos";
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
+import Provider from "./components/context/Provider";
 
 export default function App() {
   return (
-    <Container>
+    <Provider>
+      <CartBotao />
       <Header />
       <Produtos />
-    </Container>
+
+      <Cart />
+    </Provider>
   );
 }

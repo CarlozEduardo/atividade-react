@@ -1,9 +1,16 @@
 import converterParaMoeda from "../../utils/converterParaMoeda";
-import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import "./CardProduto.css";
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
 
 export default function CardProduto({ data }) {
   const { thumbnail, title, price } = data;
+  const { cartItems, setCartItems } = useContext(AppContext);
+
+  const salvarCart = () => {
+    setCartItems([...cartItems, data]);
+  };
 
   return (
     <section className="card">
@@ -18,8 +25,8 @@ export default function CardProduto({ data }) {
         <h2 className="titulo_card">{title}</h2>
       </div>
 
-      <button type="botao" className="botao_add_carrinho">
-        <LocalGroceryStoreIcon />
+      <button onClick={salvarCart} type="botao" className="botao_add_carrinho">
+        <AddShoppingCartIcon />
       </button>
     </section>
   );

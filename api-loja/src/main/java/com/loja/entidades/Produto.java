@@ -1,10 +1,12 @@
 package com.loja.entidades;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-public class Produto extends PanacheEntityBase {
+public class Produto extends PanacheEntity {
+
+    @Id
     private Integer id;
     private String nome;
     private Double preco;

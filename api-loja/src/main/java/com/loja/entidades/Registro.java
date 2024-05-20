@@ -1,10 +1,14 @@
 package com.loja.entidades;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-public class Registro extends PanacheEntityBase {
+public class Registro extends PanacheEntity {
+
+    @Id
     private Integer id;
     private Integer fkVenda;
     private Integer fkProduto;

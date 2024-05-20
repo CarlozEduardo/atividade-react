@@ -1,12 +1,16 @@
 package com.loja.entidades;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.util.Date;
 
 @Entity
-public class Venda extends PanacheEntityBase {
+public class Venda extends PanacheEntity {
+
+    @Id
     private Integer id;
     private Date data;
     private Double precoTotal;

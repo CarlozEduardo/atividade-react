@@ -1,19 +1,32 @@
 package com.loja;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import com.loja.entidades.Cliente;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
-@Path("/produto")
+import java.net.URI;
+
+@Path("/loja")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClienteResource {
 
+    @Inject
+    ClienteServices clienteServices;
+
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
+    @Path("/login")
+    public Response autentificarUsuario(@QueryParam("email") String email, @QueryParam("senha") String senha) {
+        Cliente cliente = clienteServices.autentificarUsuario(email, senha);
+        return Response.ok(cliente).build();
+    }
+
+    @POST
+    @Path("/cadastrar/{usuario}")
+    public Response cadastrarUsuario(@QueryParam("usuario") Cliente usuario) {
+        clienteServices.cadastrarUsuario(usuario);
+        return Response.created(URI.create("Cadastro realizado!")).build();
     }
 }

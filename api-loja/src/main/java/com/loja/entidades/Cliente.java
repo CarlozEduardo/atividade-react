@@ -2,15 +2,30 @@ package com.loja.entidades;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.util.List;
 
 @Entity
 public class Cliente extends PanacheEntity {
 
+    @Id
     private Integer id;
     private String nome;
     private String email;
     private String senha;
     private String CPF;
+
+    public Cliente(String nome, String email, String senha, String CPF) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.CPF = CPF;
+    }
+
+    public List<Cliente> getClientePeloEmail(String email, String senha) {
+        return list("from Cliente c " + "where c.email == " + email + "AND c.senha == " + senha);
+    }
 
     public Integer getId() {
         return id;

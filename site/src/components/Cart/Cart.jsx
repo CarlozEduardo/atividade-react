@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import "./Cart.css";
 import CartItem from "../CartItems/CartItem";
@@ -8,7 +8,6 @@ import AppContext from "../context/AppContext";
 
 function Cart() {
   const { cartItems, isCartVisible } = useContext(AppContext);
-
   const totalPrice = cartItems.reduce((acc, item) => item.price + acc, 0);
 
   return (
@@ -19,7 +18,12 @@ function Cart() {
         ))}
       </div>
 
-      <div className="cart-resume">{converterParaMoeda(totalPrice, "BRL")}</div>
+      <div className="cart-resume">
+        {converterParaMoeda(totalPrice, "BRL")}
+        <button className="button-resume" onClick={finalizarPedido}>
+          FINALIZAR COMPRA
+        </button>
+      </div>
     </section>
   );
 }

@@ -24,6 +24,8 @@
   font-weight: 500;
   padding: 35px 0 15px;
   border-top: 1px solid #ddd;
+  align-items: center;
+  display: flex;
 }
 
 .cart-items .cart-item:last-child {
@@ -32,4 +34,18 @@
 
 .cart--active {
   transform: translate(0, 0);
+}
+
+.button-resume {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  background: green;
+  cursor: pointer;
+  position: relative;
+  margin-left: 20px;
+  color: white;
 }

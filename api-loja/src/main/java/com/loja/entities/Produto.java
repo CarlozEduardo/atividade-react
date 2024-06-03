@@ -1,21 +1,33 @@
-package com.loja.entidades;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+package com.loja.entities;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Produto extends PanacheEntity {
+public class Produto extends PanacheEntityBase {
 
     @Id
-    private Integer id;
+    private String id;
     private String nome;
     private Double preco;
 
-    public Integer getId() {
+    public Produto() {}
+    public Produto(String id) {
+        this.id = id;
+    }
+
+    public Produto(String id, String nome, Double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

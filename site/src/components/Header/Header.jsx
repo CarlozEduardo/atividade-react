@@ -22,7 +22,7 @@ export default function Header() {
           <h3>Lojinha do Carlos</h3>
         </div>
 
-        <form className="search-bar" onSubmit={handleProcurar}>
+        <form className="search-bar" onChange={handleProcurar}>
           <input
             value={input}
             placeholder="Buscar produtos"
@@ -30,9 +30,6 @@ export default function Header() {
             onChange={({ target }) => setInput(target.value)}
             required
           />
-          <button type="submit" className="search__button">
-            <SearchIcon />
-          </button>
         </form>
       </div>
     </header>

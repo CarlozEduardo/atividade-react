@@ -1,30 +1,29 @@
-package com.loja.entidades;
+package com.loja.entities;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import com.loja.DTO.ClienteDTO;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.List;
-
 @Entity
-public class Cliente extends PanacheEntity {
+public class Cliente extends PanacheEntityBase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String email;
     private String senha;
-    private String CPF;
+    private String cpf;
 
-    public Cliente(String nome, String email, String senha, String CPF) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.CPF = CPF;
-    }
-
-    public List<Cliente> getClientePeloEmail(String email, String senha) {
-        return list("from Cliente c " + "where c.email == " + email + "AND c.senha == " + senha);
+    public Cliente(){}
+    public Cliente(ClienteDTO clienteDTO) {
+        this.nome = clienteDTO.getNome();
+        this.email = clienteDTO.getEmail();
+        this.senha = clienteDTO.getSenha();
+        this.cpf = clienteDTO.getSenha();
     }
 
     public Integer getId() {
@@ -59,11 +58,11 @@ public class Cliente extends PanacheEntity {
         this.senha = senha;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

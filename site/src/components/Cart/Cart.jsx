@@ -6,7 +6,7 @@ import CartItem from "../CartItems/CartItem";
 import converterParaMoeda from "../../utils/converterParaMoeda";
 import AppContext from "../context/AppContext";
 
-function Cart() {
+export default function Cart() {
   const { cartItems, isCartVisible } = useContext(AppContext);
   const totalPrice = cartItems.reduce((acc, item) => item.price + acc, 0);
 
@@ -20,12 +20,8 @@ function Cart() {
 
       <div className="cart-resume">
         {converterParaMoeda(totalPrice, "BRL")}
-        <button className="button-resume" onClick={finalizarPedido}>
-          FINALIZAR COMPRA
-        </button>
+        <button className="button-resume">FINALIZAR COMPRA</button>
       </div>
     </section>
   );
 }
-
-export default Cart;

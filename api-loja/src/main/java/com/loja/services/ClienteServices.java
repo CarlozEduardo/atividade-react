@@ -6,20 +6,25 @@ import com.loja.repository.ClienteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotAuthorizedException;
 
 @ApplicationScoped
 public class ClienteServices {
 
     @Inject
-    private ClienteRepository cliente;
+    private ClienteRepository clienteRepository;
 
     public Cliente autentificarUsuario(String email, String senha) {
-        return cliente.getClientePeloEmail(email, senha);
+        Cliente cliente = clienteRepository.getClientePeloEmail(email, senha);
+        if (cliente == null) {
+            throw new NotAuthorizedException("Email ou senha inválidos");
+        }
+        return cliente;
     }
 
     @Transactional
     public void cadastrarUsuario(ClienteDTO clienteDTO) {
-        if (cliente.verificarCliente(clienteDTO.getEmail(), clienteDTO.getSenha())) {
+        if (clienteRepository.verificarCliente(clienteDTO.getEmail(), clienteDTO.getSenha())) {
             try {
                 Cliente clienteNovo = new Cliente(clienteDTO);
                 clienteNovo.persist();

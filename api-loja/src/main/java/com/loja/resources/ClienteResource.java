@@ -1,6 +1,5 @@
 package com.loja.resources;
 
-import com.loja.entities.Produto;
 import com.loja.services.ClienteServices;
 import com.loja.DTO.ClienteDTO;
 import com.loja.entities.Cliente;
@@ -13,8 +12,6 @@ import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-
-import java.util.List;
 
 
 @Path("/loja")

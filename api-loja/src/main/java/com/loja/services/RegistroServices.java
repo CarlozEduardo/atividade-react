@@ -10,7 +10,7 @@ import java.util.List;
 public class RegistroServices {
 
     @Transactional
-    public void associarProdutoComVenda(Integer idVenda, List<String> produtoList) {
+    public void  associarProdutoComVenda(Integer idVenda, List<String> produtoList) {
         for (String idProduto : produtoList) {
             try {
                 Registro registroNovo = new Registro(idVenda, idProduto);

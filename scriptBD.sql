@@ -11,8 +11,8 @@ cpf VARCHAR(45)
 );
 
 CREATE TABLE Produto (
-id VARCHAR(55) PRIMARY KEY,
-nome VARCHAR(45),
+id VARCHAR(255) PRIMARY KEY,
+nome VARCHAR(255),
 preco DOUBLE
 );
 
@@ -36,3 +36,5 @@ CONSTRAINT fkRegistroProduto FOREIGN KEY (fkProduto) REFERENCES Produto(id)
 
 SELECT * FROM Cliente;
 SELECT * FROM Produto;
+SELECT * FROM Venda;
+SELECT * FROM Registro;
